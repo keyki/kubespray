@@ -22,7 +22,7 @@ calico_ignore_extra_pools: false
 # You can set MTU value here. If left undefined or empty, it will
 # not be specified in calico CNI config, so Calico will use built-in
 # defaults. The value should be a number, not a string.
-# calico_mtu: 1500
+calico_mtu: 1480
 
 # Limits for apps
 calico_node_memory_limit: 500M

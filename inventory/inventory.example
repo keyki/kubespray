@@ -1,31 +1,21 @@
-# ## Configure 'ip' variable to bind kubernetes services on a
-# ## different ip than the default iface
-# node1 ansible_ssh_host=95.54.0.12  # ip=10.3.0.1
-# node2 ansible_ssh_host=95.54.0.13  # ip=10.3.0.2
-# node3 ansible_ssh_host=95.54.0.14  # ip=10.3.0.3
-# node4 ansible_ssh_host=95.54.0.15  # ip=10.3.0.4
-# node5 ansible_ssh_host=95.54.0.16  # ip=10.3.0.5
-# node6 ansible_ssh_host=95.54.0.17  # ip=10.3.0.6
+cn001.l42scl.hortonworks.com ansible_ssh_host=172.18.128.1 #ip=172.18.0.1
+cn002.l42scl.hortonworks.com ansible_ssh_host=172.18.128.2 #ip=172.18.0.2
+cn003.l42scl.hortonworks.com ansible_ssh_host=172.18.128.3 #ip=172.18.0.3
+cn004.l42scl.hortonworks.com ansible_ssh_host=172.18.128.4 #ip=172.18.0.4
 
-# ## configure a bastion host if your nodes are not directly reachable
-# bastion ansible_ssh_host=x.x.x.x
+[kube-master]
+cn002.l42scl.hortonworks.com
 
-# [kube-master]
-# node1
-# node2
+[etcd]
+cn002.l42scl.hortonworks.com
+cn003.l42scl.hortonworks.com
+cn004.l42scl.hortonworks.com
 
-# [etcd]
-# node1
-# node2
-# node3
+[kube-node]
+cn001.l42scl.hortonworks.com
+cn003.l42scl.hortonworks.com
+cn004.l42scl.hortonworks.com
 
-# [kube-node]
-# node2
-# node3
-# node4
-# node5
-# node6
-
-# [k8s-cluster:children]
-# kube-node
-# kube-master
+[k8s-cluster:children]
+kube-node
+kube-master
