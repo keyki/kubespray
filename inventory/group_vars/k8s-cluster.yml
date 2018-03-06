@@ -160,7 +160,7 @@ efk_enabled: false
 helm_enabled: false
 
 # Istio deployment
-istio_enabled: true
+istio_enabled: false
 
 # Local volume provisioner deployment
 local_volumes_enabled: false
